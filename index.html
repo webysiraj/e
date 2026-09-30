@@ -1,0 +1,590 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1000 Things I Like About Eman 💗</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    min-height:100vh;
+    color:white;
+    overflow-x:hidden;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,105,180,.22), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(155,89,255,.25), transparent 30%),
+        linear-gradient(135deg,#17001f,#350044,#17001f);
+}
+
+/* Floating background */
+.floating{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
+}
+
+.float{
+    position:absolute;
+    bottom:-50px;
+    animation:floatUp linear infinite;
+    opacity:.65;
+}
+
+@keyframes floatUp{
+    from{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+    }
+    20%{opacity:.7;}
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* Pages */
+.page{
+    min-height:100vh;
+    width:100%;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    position:relative;
+    z-index:2;
+}
+
+.page.active{
+    display:flex;
+    animation:pageIn .8s ease;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.card{
+    width:min(650px,100%);
+    padding:55px 35px;
+    text-align:center;
+    border-radius:35px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.16);
+    backdrop-filter:blur(18px);
+    box-shadow:0 25px 80px rgba(0,0,0,.35);
+}
+
+.small{
+    font-size:14px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    opacity:.7;
+    margin-bottom:18px;
+}
+
+h1{
+    font-family:"Pacifico",cursive;
+    font-size:clamp(38px,8vw,70px);
+    line-height:1.15;
+    margin-bottom:25px;
+    background:linear-gradient(90deg,#fff,#ffb6df,#d9b4ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+h2{
+    font-size:clamp(28px,6vw,48px);
+    margin-bottom:30px;
+}
+
+p{
+    font-size:18px;
+    line-height:1.8;
+    opacity:.9;
+}
+
+button{
+    margin-top:35px;
+    border:0;
+    padding:15px 32px;
+    border-radius:50px;
+    font-size:16px;
+    font-weight:700;
+    color:white;
+    cursor:pointer;
+    background:linear-gradient(135deg,#ff4fa3,#9d5cff);
+    box-shadow:0 10px 30px rgba(255,79,163,.3);
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 15px 40px rgba(255,79,163,.45);
+}
+
+/* Number cards */
+.items{
+    display:grid;
+    gap:16px;
+    text-align:left;
+    margin-top:25px;
+}
+
+.item{
+    padding:18px 20px;
+    border-radius:20px;
+    background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.1);
+    transition:.3s;
+}
+
+.item:hover{
+    transform:translateX(7px);
+    background:rgba(255,255,255,.12);
+}
+
+.number{
+    color:#ff9ed5;
+    font-weight:700;
+    margin-right:8px;
+}
+
+/* Long page */
+.long-page{
+    min-height:100vh;
+    padding:70px 20px;
+    position:relative;
+    z-index:2;
+}
+
+.long-container{
+    width:min(850px,100%);
+    margin:auto;
+}
+
+.long-title{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.long-title h2{
+    font-family:"Pacifico",cursive;
+    font-size:clamp(36px,7vw,60px);
+    background:linear-gradient(90deg,#fff,#ff9ed5,#cba7ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.compliments{
+    display:grid;
+    gap:12px;
+}
+
+.compliment{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    padding:18px;
+    border-radius:20px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.35s ease;
+}
+
+.compliment:hover{
+    transform:translateX(8px);
+    background:rgba(255,255,255,.11);
+}
+
+.circle{
+    min-width:40px;
+    height:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:linear-gradient(135deg,#ff4fa3,#9d5cff);
+    font-weight:700;
+    font-size:13px;
+}
+
+.compliment-text{
+    padding-top:8px;
+    line-height:1.5;
+}
+
+.end{
+    text-align:center;
+    margin:80px auto 30px;
+    max-width:650px;
+}
+
+.end h2{
+    font-family:"Pacifico",cursive;
+    color:#ffb2dd;
+}
+
+.end p{
+    margin-top:15px;
+}
+
+/* Mobile */
+@media(max-width:600px){
+    .card{
+        padding:42px 22px;
+        border-radius:28px;
+    }
+
+    .page{
+        padding:18px;
+    }
+
+    .compliment{
+        padding:15px;
+    }
+
+    .circle{
+        min-width:34px;
+        height:34px;
+        font-size:11px;
+    }
+
+    .compliment-text{
+        font-size:14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="floating" id="floating"></div>
+
+<!-- PAGE 1 -->
+<section class="page active" id="page1">
+    <div class="card">
+        <div class="small">A little secret 💗</div>
+
+        <h1>3 Things I Like In Eman</h1>
+
+        <p>
+            Some things are easy to notice...
+            but some things make a person genuinely special.
+        </p>
+
+        <button onclick="nextPage(2)">
+            Open It ✨
+        </button>
+    </div>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page" id="page2">
+    <div class="card">
+
+        <div class="small">Only the beginning...</div>
+
+        <h2>
+            1 — Her kindness 💗<br><br>
+            2 — Her sense of humor ✨
+        </h2>
+
+        <p>
+            And honestly...
+            I don't think three things are enough.
+        </p>
+
+        <button onclick="nextPage(3)">
+            Continue 🌸
+        </button>
+    </div>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page" id="page3">
+    <div class="card">
+
+        <div class="small">Wait...</div>
+
+        <h1>ONLY 3?</h1>
+
+        <p>
+            Nah.<br><br>
+            There are way more things to appreciate about Eman.
+        </p>
+
+        <button onclick="showLongPage()">
+            Let Me Explain 💕
+        </button>
+    </div>
+</section>
+
+<!-- LONG PAGE -->
+<section class="long-page" id="page4" style="display:none;">
+
+    <div class="long-container">
+
+        <div class="long-title">
+            <div class="small">Apparently, 3 wasn't enough</div>
+
+            <h2>
+                Things I Like About Eman 💗
+            </h2>
+
+            <p>
+                Keep scrolling...
+                this list is intentionally way too long.
+            </p>
+        </div>
+
+        <div class="compliments" id="compliments"></div>
+
+        <div class="end">
+            <h2>Still Not Enough.</h2>
+
+            <p>
+                1000 things later and somehow there are
+                still more little things worth appreciating.
+            </p>
+
+            <p style="margin-top:25px;">
+                Made with a little bit of honesty,<br>
+                a little bit of craziness,<br>
+                and a lot of appreciation for Eman. 💗
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<script>
+
+/* Floating hearts + sparkles */
+
+const floating = document.getElementById("floating");
+
+const symbols = ["💗","💕","✨","🌸","💫","🦋","♡"];
+
+for(let i=0;i<35;i++){
+
+    const el = document.createElement("div");
+
+    el.className = "float";
+    el.innerHTML = symbols[Math.floor(Math.random()*symbols.length)];
+
+    el.style.left = Math.random()*100 + "%";
+    el.style.fontSize = (12 + Math.random()*20) + "px";
+    el.style.animationDuration = (8 + Math.random()*12) + "s";
+    el.style.animationDelay = Math.random()*8 + "s";
+
+    floating.appendChild(el);
+}
+
+
+/* Page switching */
+
+function nextPage(number){
+
+    document.querySelectorAll(".page").forEach(page=>{
+        page.classList.remove("active");
+    });
+
+    document.getElementById("page"+number).classList.add("active");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* Long page */
+
+function showLongPage(){
+
+    document.querySelectorAll(".page").forEach(page=>{
+        page.classList.remove("active");
+        page.style.display="none";
+    });
+
+    document.getElementById("page4").style.display="block";
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    createCompliments();
+}
+
+
+/* Compliment list */
+
+const qualities = [
+
+"Her kindness when nobody is asking her to be kind.",
+"Her ability to make ordinary conversations feel special.",
+"Her sense of humor.",
+"Her voice and the way she expresses herself.",
+"Her patience.",
+"Her honesty.",
+"Her little habits that make her unmistakably Eman.",
+"Her ability to make people feel comfortable.",
+"Her caring nature.",
+"Her creativity.",
+"Her confidence.",
+"Her positive energy.",
+"Her curiosity.",
+"Her way of looking at things differently.",
+"Her thoughtful replies.",
+"Her ability to listen.",
+"Her loyalty.",
+"Her genuine personality.",
+"Her determination.",
+"Her calmness when things get complicated.",
+"Her funny reactions.",
+"Her random thoughts.",
+"Her enthusiasm.",
+"Her imagination.",
+"Her appreciation for small things.",
+"Her ability to make people smile.",
+"Her warm personality.",
+"Her sense of responsibility.",
+"Her unique way of explaining things.",
+"Her honesty even when the truth is difficult.",
+"Her supportive nature.",
+"Her ability to remember little details.",
+"Her interesting stories.",
+"Her sense of adventure.",
+"Her creativity in unexpected moments.",
+"Her confidence to be herself.",
+"Her thoughtful nature.",
+"Her respect for other people.",
+"Her ability to understand feelings.",
+"Her natural charm.",
+"Her playful side.",
+"Her maturity.",
+"Her curiosity about the world.",
+"Her sense of fairness.",
+"Her willingness to help.",
+"Her ability to turn a boring moment into a funny one.",
+"Her positive attitude.",
+"Her unique perspective.",
+"Her patience with people.",
+"Her sincerity.",
+"Her ability to make conversations memorable.",
+"Her little jokes.",
+"Her spontaneous ideas.",
+"Her determination to keep going.",
+"Her thoughtful questions.",
+"Her ability to notice things others miss.",
+"Her kindness toward people around her.",
+"Her sense of humor at exactly the right moment.",
+"Her way of making people feel heard.",
+"Her confidence in her own ideas.",
+"Her willingness to learn.",
+"Her open-mindedness.",
+"Her ability to stay genuine.",
+"Her energy when she gets excited about something.",
+"Her funny stories.",
+"Her imagination.",
+"Her ability to make people laugh without trying too hard.",
+"Her caring words.",
+"Her ability to appreciate friendship.",
+"Her patience when explaining something.",
+"Her natural curiosity.",
+"Her little expressions.",
+"Her way of making simple moments memorable.",
+"Her thoughtful decisions.",
+"Her ability to forgive small mistakes.",
+"Her sense of humor when things get awkward.",
+"Her creativity.",
+"Her ability to encourage people.",
+"Her honesty with the people she trusts.",
+"Her ability to make a conversation last for hours.",
+"Her enthusiasm for things she enjoys.",
+"Her ability to see the good in people.",
+"Her calm presence.",
+"Her sense of individuality.",
+"Her ability to make people feel included.",
+"Her thoughtful messages.",
+"Her spontaneous laughter.",
+"Her playful personality.",
+"Her ability to stay true to herself.",
+"Her little reactions.",
+"Her willingness to understand different opinions.",
+"Her caring heart.",
+"Her ability to make people comfortable.",
+"Her sense of humor.",
+"Her patience.",
+"Her curiosity.",
+"Her creativity.",
+"Her kindness.",
+"Her honesty.",
+"Her personality.",
+"Her energy.",
+"Her way of making moments memorable."
+
+];
+
+
+/* Generate 1000 numbered compliments */
+
+function createCompliments(){
+
+    const container = document.getElementById("compliments");
+
+    if(container.children.length > 0) return;
+
+    for(let i=3;i<=1000;i++){
+
+        const div = document.createElement("div");
+
+        div.className = "compliment";
+
+        const circle = document.createElement("div");
+
+        circle.className = "circle";
+
+        circle.textContent = i;
+
+        const text = document.createElement("div");
+
+        text.className = "compliment-text";
+
+        text.textContent =
+            qualities[(i-3) % qualities.length];
+
+        div.appendChild(circle);
+        div.appendChild(text);
+
+        container.appendChild(div);
+    }
+}
+
+</script>
+
+</body>
+</html>
+```
